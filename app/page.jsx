@@ -1,11 +1,15 @@
 import Sidebar from "@/components/Sidebar";
 import MainContent from "@/components/MainContent";
+import MobileNav from "@/components/MobileNav";
 
 export default function Home() {
   return (
-    <main className="cv-layout">
-      <Sidebar />
-      <MainContent />
-    </main>
+    <>
+      <MobileNav />
+      <main className="cv-layout">
+        <Sidebar />
+        <MainContent />
+      </main>
+    </>
   );
 }

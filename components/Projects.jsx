@@ -19,6 +19,7 @@ const Projects = () => {
 
   return (
     <motion.section
+      id="projects"
       className="cv-section"
       variants={staggerContainer}
       initial="hidden"

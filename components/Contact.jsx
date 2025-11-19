@@ -10,6 +10,7 @@ import { fadeIn, staggerContainer, staggerItem } from "@/lib/animations";
 const Contact = () => {
   return (
     <motion.section
+      id="contact"  
       className="cv-section cta-section"
       variants={staggerContainer}
       initial="hidden"

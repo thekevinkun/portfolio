@@ -32,6 +32,7 @@ const MainContent = () => {
 
       {/* Summary Section */}
       <motion.section
+        id="summary"
         className="cv-section"
         variants={staggerContainer}
         initial="hidden"
@@ -48,6 +49,7 @@ const MainContent = () => {
 
       {/* Experience Section */}
       <motion.section
+        id="experience"
         className="cv-section"
         variants={staggerContainer}
         initial="hidden"
@@ -94,6 +96,7 @@ const MainContent = () => {
 
       {/* Education Section */}
       <motion.section
+        id="education"
         className="cv-section"
         variants={staggerContainer}
         initial="hidden"
