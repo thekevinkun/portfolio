@@ -6,15 +6,15 @@ import { HiMail, HiPhone, HiLocationMarker } from "react-icons/hi";
 import { FaLinkedin, FaGithub } from "react-icons/fa";
 
 import { personalInfo, skills } from "@/lib/data";
-import { fadeIn, staggerContainer, staggerItem } from "@/lib/animations";
+import { sidebarVariants, fadeIn, staggerContainer, staggerItem } from "@/lib/animations";
 
 const Sidebar = () => {
   return (
     <motion.aside
       className="cv-sidebar"
-      initial={{ opacity: 0, x: -50 }}
-      animate={{ opacity: 1, x: 0 }}
-      transition={{ duration: 0.6 }}
+      variants={sidebarVariants}
+      initial="hidden"
+      animate="visible"
     >
       {/* Profile Photo */}
       <motion.div
