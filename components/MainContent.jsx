@@ -1,7 +1,10 @@
 "use client";
 
 import { motion } from "framer-motion";
+
 import Projects from "./Projects";
+import Contact from "./Contact";
+
 import { personalInfo, experience, education } from "@/lib/data";
 import { fadeIn, staggerContainer, staggerItem } from "@/lib/animations";
 
@@ -121,6 +124,9 @@ const MainContent = () => {
           ))}
         </motion.div>
       </motion.section>
+
+      {/* CTA / Contact Section */}
+      <Contact />
     </motion.div>
   );
 };
