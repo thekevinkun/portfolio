@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { HiMenu, HiX } from "react-icons/hi";
 
 import { navItems } from "@/lib/constants";
+import { mobileNavVariants } from "@/lib/animations";
 
 const MobileNav = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -71,6 +72,19 @@ const MobileNav = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  useEffect(() => {
+    const scrollIndicator = document.querySelector(".scroll-indicator-fixed");
+
+    if (scrollIndicator) {
+      if (isOpen) {
+        scrollIndicator.style.opacity = "0";
+      } else {
+        scrollIndicator.style.opacity = "1";
+      }
+    }
+  }, [isOpen])
+  
+
   return (
     <>
       {/* Mobile Header - Only visible on mobile/tablet */}
@@ -107,11 +121,11 @@ const MobileNav = () => {
       <AnimatePresence>
         {isOpen && (
           <motion.nav
+            variants={mobileNavVariants}
+            initial="hidden"
+            animate="visible"
+            exit="hidden"
             className="mobile-nav-panel"
-            initial={{ x: "100%" }}
-            animate={{ x: 0 }}
-            exit={{ x: "100%" }}
-            transition={{ type: "spring", damping: 30, stiffness: 300 }}
           >
             {/* Close Button */}
             <div className="mobile-nav-header">
