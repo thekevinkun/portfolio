@@ -34,6 +34,22 @@ export const metadata = {
   creator: "Kevin Mahendra",
   publisher: "Kevin Mahendra",
 
+  // Manifest for PWA support
+  manifest: "/manifest.json",
+
+  // Theme color for mobile browsers
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
+    { media: "(prefers-color-scheme: dark)", color: "#28282b" },
+  ],
+
+  // Viewport
+  viewport: {
+    width: "device-width",
+    initialScale: 1,
+    maximumScale: 5,
+  },
+
   // Open Graph metadata (for social media sharing)
   openGraph: {
     type: "website",
@@ -83,6 +99,46 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
+  // Structured Data (JSON-LD) for Google Rich Results
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    name: "Kevin Mahendra",
+    jobTitle: "Full Stack Developer",
+    description:
+      "Self-taught Full Stack Developer specializing in Next.js, React, TypeScript, and modern web technologies.",
+    url: "https://kevinmahendra.com",
+    image: "https://kevinmahendra.com/images/profile-1.png",
+    email: "kevinmahendra.idn@gmail.com",
+    telephone: "+6812-3955-3510",
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: "Samarinda",
+      addressRegion: "East Kalimantan",
+      addressCountry: "ID",
+    },
+    sameAs: [
+      "https://www.linkedin.com/in/kevin-mahendra-b96153396/",
+      "https://github.com/thekevinkun",
+    ],
+    knowsAbout: [
+      "Next.js",
+      "React",
+      "TypeScript",
+      "JavaScript",
+      "Tailwind CSS",
+      "Node.js",
+      "MongoDB",
+      "PostgreSQL",
+      "Full Stack Development",
+      "Web Development",
+    ],
+    alumniOf: {
+      "@type": "EducationalOrganization",
+      name: "Harvard University CS50",
+    },
+  };
+
   return (
     <html lang="en" className={`${inter.variable} ${merriweather.variable}`}>
       <body className={inter.className}>{children}</body>
