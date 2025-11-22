@@ -1,12 +1,20 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Image from "next/image";
-import { HiMail, HiPhone, HiLocationMarker } from "react-icons/hi";
+import Link from "next/link";
+import { HiMail, HiLocationMarker } from "react-icons/hi";
 import { FaLinkedin, FaGithub } from "react-icons/fa";
+import { IoLogoWhatsapp } from "react-icons/io";
+
+import OptimizedImage from "@/components/OptimizedImage";
 
 import { personalInfo, skills } from "@/lib/data";
-import { sidebarVariants, fadeIn, staggerContainer, staggerItem } from "@/lib/animations";
+import {
+  sidebarVariants,
+  fadeIn,
+  staggerContainer,
+  staggerItem,
+} from "@/lib/animations";
 
 const Sidebar = () => {
   return (
@@ -23,13 +31,14 @@ const Sidebar = () => {
         initial="hidden"
         animate="visible"
       >
-        <Image
+        <OptimizedImage
           src="/images/profile-1.png"
           alt={`${personalInfo.firstName} ${personalInfo.lastName}`}
-          width={160}
-          height={160}
+          width={184}
+          height={184}
           className="w-full h-full object-cover"
-          priority
+          priority={true}
+          noWrapper={true}
         />
       </motion.div>
 
@@ -47,17 +56,26 @@ const Sidebar = () => {
         <motion.div variants={staggerItem}>
           <div className="contact-item">
             <HiMail className="contact-icon" />
-            <a
+            <Link
               href={`mailto:${personalInfo.email}`}
               className="hover:underline break-all"
             >
               {personalInfo.email}
-            </a>
+            </Link>
           </div>
 
           <div className="contact-item">
-            <HiPhone className="contact-icon" />
-            <span>{personalInfo.phone}</span>
+            <IoLogoWhatsapp className="contact-icon" />
+            <Link
+              href={`https://wa.me/${
+                personalInfo.waFormat
+              }?text=${encodeURIComponent(`${personalInfo.textMessage}`)}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:underline break-all"
+            >
+              {personalInfo.phone}
+            </Link>
           </div>
 
           <div className="contact-item">
@@ -67,26 +85,26 @@ const Sidebar = () => {
 
           <div className="contact-item">
             <FaLinkedin className="contact-icon" />
-            <a
+            <Link
               href={personalInfo.social.linkedin}
               target="_blank"
               rel="noopener noreferrer"
               className="hover:underline break-all"
             >
               linkedin.com/in/kevin-mahendra
-            </a>
+            </Link>
           </div>
 
           <div className="contact-item">
             <FaGithub className="contact-icon" />
-            <a
+            <Link
               href={personalInfo.social.github}
               target="_blank"
               rel="noopener noreferrer"
               className="hover:underline"
             >
               github.com/thekevinkun
-            </a>
+            </Link>
           </div>
         </motion.div>
       </motion.section>

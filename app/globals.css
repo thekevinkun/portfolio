@@ -577,7 +577,13 @@
 
   /* Tertiary Badge - Modern Stack */
   .education-badge-tertiary {
-    background: linear-gradient(-10deg, #07285e 35%, rgba(237, 202, 216, 0) 75%, #7f1e34),radial-gradient(circle, #700030 0, #003f88 100%);
+    background: linear-gradient(
+        -10deg,
+        #07285e 35%,
+        rgba(237, 202, 216, 0) 75%,
+        #7f1e34
+      ),
+      radial-gradient(circle, #700030 0, #003f88 100%);
     color: white;
     border-color: rgba(237, 202, 216, 0);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
@@ -646,6 +652,63 @@
   @media (max-width: 480px) {
     .education-badge {
       min-width: 100%;
+    }
+  }
+
+  /* Optimized Image Wrapper */
+  .optimized-image-wrapper {
+    position: relative;
+    overflow: hidden;
+    background-color: var(--bg-light);
+  }
+
+  /* Image Loading States */
+  .optimized-image {
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+
+  .optimized-image.loading {
+    opacity: 0;
+    transform: scale(1.05);
+  }
+
+  .optimized-image.loaded {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  /* Loading Shimmer Effect */
+  .image-loading-shimmer {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      90deg,
+      var(--bg-light) 0%,
+      rgba(255, 255, 255, 0.8) 50%,
+      var(--bg-light) 100%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+    z-index: 1;
+  }
+
+  @keyframes shimmer {
+    0% {
+      background-position: 200% 0;
+    }
+    100% {
+      background-position: -200% 0;
+    }
+  }
+
+  /* Performance: Reduce motion for accessibility */
+  @media (prefers-reduced-motion: reduce) {
+    .optimized-image {
+      transition: none;
+    }
+
+    .image-loading-shimmer {
+      animation: none;
     }
   }
 
@@ -1273,6 +1336,8 @@
   .mobile-header-logo {
     display: flex;
     align-items: center;
+    width: 3.5rem;
+    height: auto;
   }
 
   .logo-text {

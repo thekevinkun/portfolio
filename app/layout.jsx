@@ -15,6 +15,7 @@ const merriweather = Merriweather({
 });
 
 export const metadata = {
+  metadataBase: new URL("https://kevinmahendra.vercel.app"),
   title: "Kevin Mahendra | Full Stack Developer",
   description:
     "Self-taught Full Stack Developer passionate about building real-world web applications. Specializing in Next.js, React, TypeScript, and modern web technologies.",
@@ -37,24 +38,11 @@ export const metadata = {
   // Manifest for PWA support
   manifest: "/manifest.json",
 
-  // Theme color for mobile browsers
-  themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
-    { media: "(prefers-color-scheme: dark)", color: "#28282b" },
-  ],
-
-  // Viewport
-  viewport: {
-    width: "device-width",
-    initialScale: 1,
-    maximumScale: 5,
-  },
-
   // Open Graph metadata (for social media sharing)
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://kevinmahendra.com",
+    url: "https://kevinmahendra.vercel.app",
     siteName: "Kevin Mahendra Portfolio",
     title: "Kevin Mahendra | Full Stack Developer",
     description:
@@ -98,6 +86,16 @@ export const metadata = {
   },
 };
 
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
+    { media: "(prefers-color-scheme: dark)", color: "#28282b" },
+  ],
+};
+
 export default function RootLayout({ children }) {
   // Structured Data (JSON-LD) for Google Rich Results
   const structuredData = {
@@ -107,8 +105,8 @@ export default function RootLayout({ children }) {
     jobTitle: "Full Stack Developer",
     description:
       "Self-taught Full Stack Developer specializing in Next.js, React, TypeScript, and modern web technologies.",
-    url: "https://kevinmahendra.com",
-    image: "https://kevinmahendra.com/images/profile-1.png",
+    url: "https://kevinmahendra.vercel.app",
+    image: "https://kevinmahendra.vercel.app/images/profile-1.png",
     email: "kevinmahendra.idn@gmail.com",
     telephone: "+6812-3955-3510",
     address: {

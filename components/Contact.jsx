@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { motion } from "framer-motion";
 import { HiMail } from "react-icons/hi";
 import { FaLinkedin, FaGithub } from "react-icons/fa";
@@ -29,14 +30,14 @@ const Contact = () => {
 
       {/* Primary CTA - Email Button */}
       <motion.div className="cta-actions" variants={staggerItem}>
-        <a href={`mailto:${personalInfo.email}`} className="cta-button-primary">
+        <Link href={`mailto:${personalInfo.email}`} className="cta-button-primary">
           <HiMail className="cta-icon" />
           <span>Get in Touch</span>
-        </a>
+        </Link>
 
         {/* Social Links */}
         <div className="cta-social">
-          <a
+          <Link
             href={personalInfo.social.linkedin}
             target="_blank"
             rel="noopener noreferrer"
@@ -45,9 +46,9 @@ const Contact = () => {
           >
             <FaLinkedin />
             <span>LinkedIn</span>
-          </a>
+          </Link>
 
-          <a
+          <Link
             href={personalInfo.social.github}
             target="_blank"
             rel="noopener noreferrer"
@@ -56,7 +57,7 @@ const Contact = () => {
           >
             <FaGithub />
             <span>GitHub</span>
-          </a>
+          </Link>
         </div>
       </motion.div>
 

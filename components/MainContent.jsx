@@ -1,10 +1,10 @@
 "use client";
 
-import Image from "next/image";
 import { motion } from "framer-motion";
 
-import Projects from "./Projects";
-import Contact from "./Contact";
+import Projects from "@/components/Projects";
+import Contact from "@/components/Contact";
+import OptimizedImage from "@/components/OptimizedImage";
 
 import { personalInfo, experience, education } from "@/lib/data";
 import { fadeIn, staggerContainer, staggerItem } from "@/lib/animations";
@@ -120,7 +120,7 @@ const MainContent = () => {
             <p className="text-secondary italic mb-3">{education.activities}</p>
           )}
 
-          {/* Course Badges */}
+          {/* Course `Badge`s */}
           <div className="education-badges">
             {education.courses.map((course, index) => (
               <div
@@ -128,12 +128,13 @@ const MainContent = () => {
                 className={`education-badge education-badge-${course.color}`}
               >
                 <div className="badge-image-wrapper">
-                  <Image
+                  <OptimizedImage
                     src={course.image}
                     alt={course.name}
                     width={32}
                     height={32}
                     className="badge-image"
+                    noWrapper={true}
                   />
                 </div>
                 <span className="badge-text">{course.name}</span>

@@ -4,6 +4,8 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { HiMenu, HiX } from "react-icons/hi";
 
+import OptimizedImage from "@/components/OptimizedImage";
+
 import { navItems } from "@/lib/constants";
 import { mobileNavVariants } from "@/lib/animations";
 
@@ -91,7 +93,15 @@ const MobileNav = () => {
       <header className="mobile-header">
         <div className="mobile-header-content">
           <div className="mobile-header-logo">
-            <span className="logo-text">KM</span>
+            <OptimizedImage
+              src="/images/logo-black.png"
+              alt="Kevin Mahendra Logo"
+              width={64}
+              height={64}
+              className="w-full h-full object-contain"
+              priority={true}
+              noWrapper={true}
+            />
           </div>
 
           <button

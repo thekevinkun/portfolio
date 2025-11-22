@@ -1,21 +1,21 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
-import Image from "next/image";
 import { FaGithub, FaExternalLinkAlt } from "react-icons/fa";
-import { projects, getProjectCategories } from "@/lib/data";
+
+import OptimizedImage from "@/components/OptimizedImage";
+
 import { staggerContainer, staggerItem } from "@/lib/animations";
+import { getProjectCategories, getProjectsByCategory } from "@/lib/constants";
 
 const Projects = () => {
   const [activeTab, setActiveTab] = useState("All");
   const categories = getProjectCategories();
 
   // Filter projects based on active tab
-  const filteredProjects =
-    activeTab === "All"
-      ? projects
-      : projects.filter((project) => project.type === activeTab);
+  const filteredProjects = getProjectsByCategory(activeTab);
 
   return (
     <motion.section
@@ -71,9 +71,9 @@ const Projects = () => {
                 </div>
               )}
 
-              {/* Project Image */}
+              {/* Project Image with Optimized Loading */}
               <div className="project-image-container">
-                <Image
+                <OptimizedImage
                   src={project.image}
                   alt={project.name}
                   width={800}
@@ -112,7 +112,7 @@ const Projects = () => {
                 {/* Links */}
                 <div className="project-card-links">
                   {project.links.live && (
-                    <a
+                    <Link
                       href={project.links.live}
                       target="_blank"
                       rel="noopener noreferrer"
@@ -120,10 +120,10 @@ const Projects = () => {
                     >
                       <FaExternalLinkAlt />
                       <span>Live Demo</span>
-                    </a>
+                    </Link>
                   )}
                   {project.links.github && (
-                    <a
+                    <Link
                       href={project.links.github}
                       target="_blank"
                       rel="noopener noreferrer"
@@ -131,7 +131,7 @@ const Projects = () => {
                     >
                       <FaGithub />
                       <span>GitHub</span>
-                    </a>
+                    </Link>
                   )}
                 </div>
               </div>
