@@ -1526,6 +1526,13 @@
     }
   }
 
+  /* Reset padding on desktop since nav is inside content */
+  @media (min-width: 1024px) {
+    .cv-content {
+      padding: 4rem 3.5rem !important;
+    }
+  }
+
   @media (max-width: 640px) {
     .mobile-nav-panel {
       width: 90%;
@@ -1613,7 +1620,123 @@
       font-size: 1.25rem;
     }
   }
+
+  /* FLOATING NAVIGATION BAR (Top Right - Vertical Icons) */
+  .floating-nav-bar {
+    position: fixed;
+    top: 6rem;
+    right: 1.5rem;
+    z-index: 100;
+    display: none; /* Hidden by default */
+  }
+
+  /* Show only on desktop */
+  @media (min-width: 1024px) {
+    .floating-nav-bar {
+      display: block;
+    }
+  }
+
+  .floating-nav-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.5rem;
+  }
+
+  /* Navigation Item */
+  .floating-nav-item {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 0.75rem;
+    padding: 0.75rem;
+    background-color: rgba(255, 255, 255, 0.5);
+    border: 2px solid var(--border-light);
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    color: var(--text-secondary);
+    white-space: nowrap;
+    overflow: hidden;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+    position: relative;
+  }
+
+  .floating-nav-item:hover {
+    background-color: rgba(255, 255, 255, 1);
+    border-color: var(--border-dark);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+    color: var(--text-primary);
+  }
+
+  .floating-nav-item-active {
+    background-color: var(--primary);
+    color: white;
+    border-color: var(--primary);
+  }
+
+  .floating-nav-item-active:hover {
+    background-color: var(--accent);
+    border-color: var(--accent);
+  }
+
+  /* Icon */
+  .floating-nav-icon {
+    font-size: 1.25rem;
+    flex-shrink: 0;
+    transition: transform 0.2s ease;
+  }
+
+  .floating-nav-item:hover .floating-nav-icon {
+    transform: scale(1.1);
+  }
+
+  /* White text for active items on hover */
+  .floating-nav-item-active:hover .floating-nav-icon-active {
+    color: white !important; /* Keep white on hover */
+  }
+
+  /* Label (slides in from left on individual hover) */
+  .floating-nav-label {
+    font-size: 0.875rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    padding-left: 0.5rem;
+    overflow: hidden;
+    color: var(--text-secondary); /* Default: gray text */
+    transition: color 0.2s ease;
+  }
+
+  .floating-nav-item:hover .floating-nav-label {
+    color: var(--text-primary); /* Hover on normal items: dark text */
+  }
+
+  /* White text for active items on hover */
+  .floating-nav-label-active {
+    color: white !important; /* Active items: white text */
+  }
+
+  .floating-nav-item-active:hover .floating-nav-label-active {
+    color: white !important; /* Keep white on hover */
+  }
+
+  /* Responsive - hide on mobile/tablet */
+  @media (max-width: 1023px) {
+    .floating-nav-bar {
+      display: none;
+    }
+  }
+
+  /* Adjust position for smaller desktop screens */
+  @media (min-width: 1024px) and (max-width: 1280px) {
+    .floating-nav-bar {
+      right: 1rem;
+    }
+  }
 }
+/* END UTILITY CLASSES */
 
 /* RESPONSIVE OVERRIDES */
 @media (max-width: 1023px) {
