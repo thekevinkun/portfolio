@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
 
 import Projects from "./Projects";
@@ -91,9 +92,6 @@ const MainContent = () => {
         ))}
       </motion.section>
 
-      {/* Projects Section - NEW TABBED VERSION */}
-      <Projects />
-
       {/* Education Section */}
       <motion.section
         id="education"
@@ -116,17 +114,56 @@ const MainContent = () => {
               {education.startDate} - {education.endDate}
             </p>
           </div>
+
           <p className="text-secondary mb-2">{education.field}</p>
           {education.activities && (
             <p className="text-secondary italic mb-3">{education.activities}</p>
           )}
+
+          {/* Course Badges */}
+          <div className="education-badges">
+            {education.courses.map((course, index) => (
+              <div
+                key={index}
+                className={`education-badge education-badge-${course.color}`}
+              >
+                <div className="badge-image-wrapper">
+                  <Image
+                    src={course.image}
+                    alt={course.name}
+                    width={32}
+                    height={32}
+                    className="badge-image"
+                  />
+                </div>
+                <span className="badge-text">{course.name}</span>
+              </div>
+            ))}
+          </div>
+
+          {/* Description Paragraphs */}
           {education.description.map((paragraph, index) => (
             <p key={index} className="text-body">
               {paragraph}
             </p>
           ))}
+
+          {/* Key Learning Achievements */}
+          <div className="education-achievements">
+            <p className="highlights-title">Key Learning Achievements:</p>
+            <ul className="highlights-list">
+              {education.achievements.map((achievement, index) => (
+                <li key={index} className="highlight-item">
+                  {achievement}
+                </li>
+              ))}
+            </ul>
+          </div>
         </motion.div>
       </motion.section>
+      
+      {/* Projects Section - NEW TABBED VERSION */}
+      <Projects />
 
       {/* CTA / Contact Section */}
       <Contact />

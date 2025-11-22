@@ -517,6 +517,138 @@
     line-height: 1.7;
   }
 
+  /* Education Badges */
+  .education-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.875rem;
+    margin-top: 1.5rem;
+    margin-bottom: 1.75rem;
+    padding: 1.25rem;
+    background: linear-gradient(
+      135deg,
+      var(--bg-light) 0%,
+      var(--bg-white) 100%
+    );
+    border-radius: 8px;
+    border: 1px solid var(--border-light);
+  }
+
+  .education-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.625rem;
+    padding: 0.75rem 1.25rem;
+    font-size: 0.875rem;
+    font-weight: 700;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    cursor: default;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    border: 2px solid;
+  }
+
+  /* Primary Badge - CS50 Harvard */
+  .education-badge-primary {
+    background: linear-gradient(135deg, #a51c30 0%, #8b0000 100%);
+    color: white;
+    border-color: #a51c30;
+    box-shadow: 0 4px 12px rgba(165, 28, 48, 0.2);
+  }
+
+  .education-badge-primary:hover {
+    transform: translateY(-3px) scale(1.03);
+    box-shadow: 0 8px 20px rgba(165, 28, 48, 0.3);
+  }
+
+  /* Secondary Badge - freeCodeCamp */
+  .education-badge-secondary {
+    background: linear-gradient(135deg, #0a0a23 0%, #050514 100%);
+    color: white;
+    border-color: #0a0a23;
+    box-shadow: 0 4px 12px rgba(0, 100, 0, 0.2);
+  }
+
+  .education-badge-secondary:hover {
+    transform: translateY(-3px) scale(1.03);
+    box-shadow: 0 8px 20px rgba(10, 10, 35, 0.3);
+  }
+
+  /* Tertiary Badge - Modern Stack */
+  .education-badge-tertiary {
+    background: linear-gradient(-10deg, #07285e 35%, rgba(237, 202, 216, 0) 75%, #7f1e34),radial-gradient(circle, #700030 0, #003f88 100%);
+    color: white;
+    border-color: rgba(237, 202, 216, 0);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  }
+
+  .education-badge-tertiary:hover {
+    transform: translateY(-3px) scale(1.03);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  }
+
+  .badge-image-wrapper {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    background-color: rgba(255, 255, 255, 0.15);
+    border-radius: 6px;
+    padding: 4px;
+  }
+
+  .badge-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  .badge-text {
+    font-size: 0.8rem;
+    line-height: 1;
+  }
+
+  /* Education Achievements Section */
+  .education-achievements {
+    margin-top: 2rem;
+    padding-top: 1.75rem;
+    border-top: 2px solid var(--border-light);
+  }
+
+  /* Responsive Adjustments */
+  @media (max-width: 640px) {
+    .education-badges {
+      padding: 1rem;
+      gap: 0.625rem;
+    }
+
+    .education-badge {
+      padding: 0.625rem 1rem;
+      font-size: 0.75rem;
+      min-width: calc(50% - 0.3125rem);
+      justify-content: center;
+    }
+
+    .badge-image-wrapper {
+      width: 28px;
+      height: 28px;
+      padding: 3px;
+    }
+
+    .badge-text {
+      font-size: 0.7rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .education-badge {
+      min-width: 100%;
+    }
+  }
+
   /* TAGS (Tech Stack) */
   .tag {
     display: inline-block;
@@ -1470,8 +1602,8 @@
   }
 
   .profile-image-wrapper {
-    width: 10rem;
-    height: 10rem;
+    width: 10.5rem;
+    height: 10.5rem;
   }
 
   .tag {
@@ -1537,6 +1669,11 @@
 }
 
 @keyframes pulse {
-  0%, 100% { box-shadow: 0 4px 12px rgba(255, 255, 255, 0.15); }
-  50% { box-shadow: 0 4px 20px rgba(255, 255, 255, 0.3); }
+  0%,
+  100% {
+    box-shadow: 0 4px 12px rgba(255, 255, 255, 0.15);
+  }
+  50% {
+    box-shadow: 0 4px 20px rgba(255, 255, 255, 0.3);
+  }
 }
