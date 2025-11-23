@@ -2,6 +2,9 @@
 
 A minimalist, CV-style portfolio website built with Next.js 15, showcasing my journey as a self-taught Full Stack Developer.
 
+<img width="1920" height="1136" alt="Screenshot of Kevin Mahendra Web Portfolio" src="https://github.com/user-attachments/assets/519be0ff-db08-4d88-87c8-0980c7d1f4c5" />
+
+
 ## Overview
 
 This portfolio presents my work and skills in a clean, newspaper-inspired design with a focus on readability and professional presentation. The layout features a two-column CV structure with a dark sidebar and white content area, optimized for both desktop and mobile viewing.
