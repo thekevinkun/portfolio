@@ -91,7 +91,7 @@ const Sidebar = () => {
               rel="noopener noreferrer"
               className="hover:underline break-all"
             >
-              linkedin.com/in/kevin-mahendra
+              linkedin.com/in/kevinmahendra
             </Link>
           </div>
 

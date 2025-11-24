@@ -116,7 +116,7 @@ export default function RootLayout({ children }) {
       addressCountry: "ID",
     },
     sameAs: [
-      "https://www.linkedin.com/in/kevin-mahendra-b96153396/",
+      "https://www.linkedin.com/in/kevinmahendra1997/",
       "https://github.com/thekevinkun",
     ],
     knowsAbout: [

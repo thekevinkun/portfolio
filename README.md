@@ -311,7 +311,7 @@ This project is open source and available under the [MIT License](LICENSE).
 **Kevin Mahendra**
 
 - Email: [kevinmahendra.idn@gmail.com](mailto:kevinmahendra.idn@gmail.com)
-- LinkedIn: [kevin-mahendra-b96153396](https://www.linkedin.com/in/kevin-mahendra-b96153396/)
+- LinkedIn: [kevinmahendra1997](https://www.linkedin.com/in/kevinmahendra1997/)
 - GitHub: [@thekevinkun](https://github.com/thekevinkun)
 - Location: Samarinda, East Kalimantan, Indonesia
 
