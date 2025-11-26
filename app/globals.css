@@ -1624,7 +1624,7 @@
   /* FLOATING NAVIGATION BAR (Top Right - Vertical Icons) */
   .floating-nav-bar {
     position: fixed;
-    top: 6rem;
+    top: 5.85rem;
     right: 1.5rem;
     z-index: 100;
     display: none; /* Hidden by default */
