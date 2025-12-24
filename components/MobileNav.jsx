@@ -94,7 +94,7 @@ const MobileNav = () => {
         <div className="mobile-header-content">
           <div className="mobile-header-logo">
             <OptimizedImage
-              src="/images/logo-black.png"
+              src="/images/logos/logo-black.png"
               alt="Kevin Mahendra Logo"
               width={64}
               height={64}
