@@ -43,10 +43,20 @@ const MainContent = () => {
         <motion.h2 className="content-title" variants={staggerItem}>
           SUMMARY
         </motion.h2>
-        <motion.div variants={staggerItem}>
-          <p className="text-body mb-3">{personalInfo.summary}</p>
+        <motion.h3 className="font-semibold mb-3" variants={staggerItem}>
+          Hey, I'm Kevin.
+        </motion.h3>
+        <motion.div variants={staggerItem} className="space-y-3">
+          {personalInfo.summary.map((paragraph, index) => (
+            <p key={index} className="text-body">
+              {paragraph}
+            </p>
+          ))}
         </motion.div>
       </motion.section>
+
+      {/* Projects Section - NEW TABBED VERSION */}
+      <Projects />
 
       {/* Experience Section */}
       <motion.section
@@ -162,9 +172,6 @@ const MainContent = () => {
           </div>
         </motion.div>
       </motion.section>
-      
-      {/* Projects Section - NEW TABBED VERSION */}
-      <Projects />
 
       {/* CTA / Contact Section */}
       <Contact />
