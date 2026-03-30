@@ -130,21 +130,36 @@
     }
   }
 
-  /* Custom scrollbar for sidebar */
-  .cv-sidebar::-webkit-scrollbar {
+  /* Cross-browser custom scrollbars for scrollable navigation panels */
+  .cv-sidebar,
+  .left-drawer-panel-inner,
+  .mobile-nav-list {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.2) rgba(255, 255, 255, 0.05);
+  }
+
+  .cv-sidebar::-webkit-scrollbar,
+  .left-drawer-panel-inner::-webkit-scrollbar,
+  .mobile-nav-list::-webkit-scrollbar {
     width: 8px;
   }
 
-  .cv-sidebar::-webkit-scrollbar-track {
+  .cv-sidebar::-webkit-scrollbar-track,
+  .left-drawer-panel-inner::-webkit-scrollbar-track,
+  .mobile-nav-list::-webkit-scrollbar-track {
     background: rgba(255, 255, 255, 0.05);
   }
 
-  .cv-sidebar::-webkit-scrollbar-thumb {
+  .cv-sidebar::-webkit-scrollbar-thumb,
+  .left-drawer-panel-inner::-webkit-scrollbar-thumb,
+  .mobile-nav-list::-webkit-scrollbar-thumb {
     background: rgba(255, 255, 255, 0.2);
     border-radius: 4px;
   }
 
-  .cv-sidebar::-webkit-scrollbar-thumb:hover {
+  .cv-sidebar::-webkit-scrollbar-thumb:hover,
+  .left-drawer-panel-inner::-webkit-scrollbar-thumb:hover,
+  .mobile-nav-list::-webkit-scrollbar-thumb:hover {
     background: rgba(255, 255, 255, 0.3);
   }
 
@@ -165,7 +180,7 @@
   .profile-image-wrapper {
     width: 11.5rem;
     height: 11.5rem;
-    margin: 0 auto 2.5rem;
+    margin: 0 auto ;
     border-radius: 9999px;
     overflow: hidden;
     border: 5px solid rgba(255, 255, 255, 0.25);
@@ -1340,6 +1355,101 @@
     height: auto;
   }
 
+  .mobile-header-logo-button {
+    width: 3.5rem;
+    height: 3.5rem;
+    background: transparent;
+    border: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    cursor: pointer;
+    position: relative;
+  }
+
+  .mobile-header-logo-button-pulse {
+    overflow: visible;
+  }
+
+  .mobile-header-logo-asset {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    width: 100%;
+    height: 100%;
+  }
+
+  .mobile-logo-pulse {
+    position: absolute;
+    inset: -0.22rem;
+    border-radius: 9999px;
+    background:
+      radial-gradient(circle at center,
+        rgba(64, 60, 53, 0.56) 0%,
+        rgba(64, 60, 53, 0.36) 30%,
+        rgba(40, 40, 43, 0) 52%),
+      radial-gradient(circle at center,
+        rgba(172, 160, 132, 0.74) 0%,
+        rgba(126, 116, 97, 0.5) 32%,
+        rgba(82, 76, 67, 0.26) 54%,
+        rgba(56, 52, 47, 0.1) 68%,
+        rgba(40, 40, 43, 0) 80%);
+    filter: blur(10px);
+    transform: scale(0.96);
+    animation: mobile-logo-pulse 1.65s ease-in-out infinite;
+    z-index: 0;
+    pointer-events: none;
+    box-shadow:
+      0 0 0 1px rgba(112, 102, 83, 0.24),
+      0 0 14px rgba(112, 102, 83, 0.32);
+  }
+
+  .mobile-header-logo-area {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    height: 100%;
+    position: relative;
+  }
+
+  .mobile-logo-tooltip {
+    position: absolute;
+    left: 0;
+    top: 48px; /* below the logo button without shifting it */
+    margin-top: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 0.35rem 0.6rem;
+    background-color: rgba(255, 255, 255, 0.95);
+    border: 1px solid var(--border-light);
+    border-radius: 9999px;
+    color: var(--primary);
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.01em;
+    pointer-events: none; /* purely visual hint */
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+    z-index: 3;
+    min-width: 200px;
+    width: 100%;
+  }
+
+  @keyframes mobile-logo-pulse {
+    0%,
+    100% {
+      opacity: 0.8;
+      transform: scale(0.95);
+    }
+    50% {
+      opacity: 1;
+      transform: scale(1.1);
+    }
+  }
+
   .logo-text {
     font-family: var(--font-serif);
     font-size: 1.5rem;
@@ -1395,6 +1505,92 @@
     display: flex;
     flex-direction: column;
     box-shadow: -4px 0 24px rgba(0, 0, 0, 0.15);
+  }
+
+  /* LEFT DRAWER (Profile/Skills) */
+  .left-drawer-backdrop {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 122;
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+  }
+
+  .left-drawer-panel {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 85%;
+    max-width: 360px;
+    z-index: 130;
+    display: flex;
+    flex-direction: column;
+    color: white;
+    background: linear-gradient(
+      180deg,
+      var(--primary) 0%,
+      var(--primary-light) 100%
+    );
+    box-shadow: 4px 0 24px rgba(0, 0, 0, 0.2);
+  }
+
+  .left-drawer-panel-inner {
+    height: 100%;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .left-drawer-content {
+    padding: 0 2rem 2.5rem;
+    margin-top: 2rem;
+  }
+
+  .left-drawer-header {
+    width: 100%;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    margin: 0;
+    padding: 1rem 2rem;
+    background: linear-gradient(
+      180deg,
+      var(--primary) 0%,
+      var(--primary-light) 100%
+    );
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .left-drawer-title {
+    font-family: var(--font-serif);
+    font-size: 1.25rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+
+  .left-drawer-close {
+    width: 40px;
+    height: 40px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(255, 255, 255, 0.12);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-size: 1.25rem;
+  }
+
+  .left-drawer-close:hover {
+    background-color: rgba(255, 255, 255, 0.22);
+    border-color: rgba(255, 255, 255, 0.28);
+    transform: translateY(-1px);
   }
 
   /* Panel Header */
@@ -1521,6 +1717,10 @@
       padding-top: 6rem !important;
     }
 
+    .sidebar-details {
+      display: none;
+    }
+
     .cv-content {
       padding-top: calc(70px + 2.5rem);
     }
@@ -1634,6 +1834,14 @@
   @media (min-width: 1024px) {
     .floating-nav-bar {
       display: block;
+    }
+  }
+
+  /* Hide left drawer on desktop */
+  @media (min-width: 1024px) {
+    .left-drawer-backdrop,
+    .left-drawer-panel {
+      display: none;
     }
   }
 
@@ -1790,8 +1998,9 @@
   }
 
   .profile-image-wrapper {
-    width: 10.5rem;
-    height: 10.5rem;
+    width: 11rem;   
+    height: 11rem;
+    margin: 0 auto 0;
   }
 
   .tag {

@@ -1,55 +1,52 @@
 "use client";
 
-import { motion } from "framer-motion";
 import Link from "next/link";
+import { motion } from "framer-motion";
 import { HiMail, HiLocationMarker } from "react-icons/hi";
 import { FaLinkedin, FaGithub } from "react-icons/fa";
 import { IoLogoWhatsapp } from "react-icons/io";
+import { HiX } from "react-icons/hi";
 
 import OptimizedImage from "@/components/OptimizedImage";
 
 import { personalInfo, skills } from "@/lib/data";
-import {
-  sidebarVariants,
-  fadeIn,
-  staggerContainer,
-  staggerItem,
-} from "@/lib/animations";
+import { staggerContainer, staggerItem } from "@/lib/animations";
 
-const Sidebar = () => {
+const LeftDrawer = ({ onClose }) => {
   return (
-    <motion.aside
-      className="cv-sidebar"
-      variants={sidebarVariants}
-      initial="hidden"
-      animate="visible"
+    <motion.div
+      className="left-drawer-panel-inner"
+      initial={false}
+      animate={false}
     >
-      {/* Profile Photo */}
-      <motion.div
-        className="profile-image-wrapper"
-        variants={fadeIn}
-        initial="hidden"
-        animate="visible"
-      >
+      <div className="left-drawer-header">
         <OptimizedImage
-          src="/images/profile-1.png"
-          alt={`${personalInfo.firstName} ${personalInfo.lastName}`}
-          width={184}
-          height={184}
-          className="w-full h-full object-cover"
+          src="/images/logos/logo-white.png"
+          alt="Kevin Mahendra Logo"
+          width={56}
+          height={56}
+          className="w-14 h-14 object-contain"
           priority={true}
           noWrapper={true}
         />
-      </motion.div>
+        <button
+          type="button"
+          onClick={onClose}
+          className="left-drawer-close"
+          aria-label="Close left panel"
+        >
+          <HiX />
+        </button>
+      </div>
 
-      {/* Contact / Skills / Languages are hidden on tablet/mobile (moved to the left drawer). */}
-      <div className="sidebar-details">
+      <div className="left-drawer-content">
         {/* Contact Section */}
         <motion.section
-          className="cv-section-sm"
+          className="cv-section-sm left-drawer-section"
           variants={staggerContainer}
           initial="hidden"
-          animate="visible"
+          whileInView="visible"
+          viewport={{ once: true }}
         >
           <motion.h2 className="sidebar-title" variants={staggerItem}>
             CONTACT
@@ -113,7 +110,7 @@ const Sidebar = () => {
 
         {/* Skills Section */}
         <motion.section
-          className="cv-section-sm"
+          className="cv-section-sm left-drawer-section"
           variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
@@ -143,7 +140,7 @@ const Sidebar = () => {
 
         {/* Languages Section */}
         <motion.section
-          className="cv-section-sm"
+          className="cv-section-sm left-drawer-section"
           variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
@@ -172,8 +169,8 @@ const Sidebar = () => {
           </motion.div>
         </motion.section>
       </div>
-    </motion.aside>
+    </motion.div>
   );
 };
 
-export default Sidebar;
+export default LeftDrawer;
