@@ -118,6 +118,10 @@
     pointer-events: none;
   }
 
+  .sidebar-details {
+    margin-top: 2rem !important;
+  }
+
   @media (min-width: 1024px) {
     .cv-sidebar {
       width: var(--sidebar-width);

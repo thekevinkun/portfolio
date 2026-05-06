@@ -43,12 +43,9 @@ const MainContent = () => {
         <motion.h2 className="content-title" variants={staggerItem}>
           SUMMARY
         </motion.h2>
-        <motion.h3 className="font-semibold mb-3" variants={staggerItem}>
-          Hey, I'm Kevin.
-        </motion.h3>
         <motion.div variants={staggerItem} className="space-y-3">
           {personalInfo.summary.map((paragraph, index) => (
-            <p key={index} className="text-body">
+            <p key={index} className="max-w-[985px] text-body">
               {paragraph}
             </p>
           ))}
@@ -83,7 +80,14 @@ const MainContent = () => {
             </div>
 
             {/* Description Paragraph */}
-            <p className="text-body mb-4">{exp.description}</p>
+            {exp.description && exp.description.length > 0 && (
+              exp.description.map((paragraph, index) => (
+                <p key={index} className="max-w-[985px] text-body mb-1">
+                  {paragraph}
+                </p>
+              ))
+            )}
+            
 
             {/* Highlights as Bullet Points */}
             {exp.highlights && exp.highlights.length > 0 && (
@@ -91,7 +95,7 @@ const MainContent = () => {
                 <p className="highlights-title">Key Achievements:</p>
                 <ul className="highlights-list">
                   {exp.highlights.map((highlight, index) => (
-                    <li key={index} className="highlight-item">
+                    <li key={index} className="max-w-[985px] highlight-item">
                       {highlight}
                     </li>
                   ))}
@@ -118,18 +122,20 @@ const MainContent = () => {
           <div className="cv-card-header">
             <div>
               <h3 className="heading-job">{education.degree}</h3>
-              <p className="heading-company">{education.school}</p>
             </div>
+
             <p className="text-date">
               {education.startDate} - {education.endDate}
             </p>
           </div>
 
-          <p className="text-secondary mb-2">{education.field}</p>
-          {education.activities && (
-            <p className="text-secondary italic mb-3">{education.activities}</p>
-          )}
-
+          {/* Description Paragraphs */}
+          {education.description.map((paragraph, index) => (
+            <p key={index} className="max-w-[860px] !font-medium text-body">
+              {paragraph}
+            </p>
+          ))}
+          
           {/* Course `Badge`s */}
           <div className="education-badges">
             {education.courses.map((course, index) => (
@@ -152,18 +158,27 @@ const MainContent = () => {
             ))}
           </div>
 
-          {/* Description Paragraphs */}
-          {education.description.map((paragraph, index) => (
-            <p key={index} className="text-body">
-              {paragraph}
-            </p>
-          ))}
-
-          {/* Key Learning Achievements */}
+          {/* Relevant Learning Achievements */}
           <div className="education-achievements">
-            <p className="highlights-title">Key Learning Achievements:</p>
+            <h3 className="highlights-title !text-lg">Relevant Learning</h3>
             <ul className="highlights-list">
-              {education.achievements.map((achievement, index) => (
+              {education.relevantLearning.map((achievement, index) => (
+                <li key={index} className="highlight-item">
+                  <p className="font-semibold">{achievement.title}</p>
+                  <p className="text-sm text-muted">{achievement.description}</p>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Applied Learning Achievements */}
+          <div className="education-achievements">
+            <h3 className="highlights-title !text-lg">Applied Learning</h3>
+            <p className="max-w-2xl !font-normal !text-base mb-[0.875rem]">
+              Applied all learning through building and deploying production-style applications, focusing on:
+            </p>
+            <ul className="highlights-list">
+              {education.appliedLearning.map((achievement, index) => (
                 <li key={index} className="highlight-item">
                   {achievement}
                 </li>
